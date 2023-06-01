@@ -1,5 +1,5 @@
 import React from "react";
-import { Text, ToastAndroid, Image } from "react-native";
+import { Text, ToastAndroid, Image, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
 
@@ -104,6 +104,12 @@ export default function Login() {
           <Image source={require("../../assets/facebookicon.png")} />
           <Text style={{ color: "#FFF" }}>ENTRAR COM FACEBOOK</Text>
         </S.SocialButtonFacebook>
+        <TouchableOpacity>
+          <Text style={{ fontSize: 15 }}>
+            Não tem uma conta?
+            <Text style={{ fontSize: 15, color: "#98C065" }}> Inscreva-se</Text>
+          </Text>
+        </TouchableOpacity>
       </S.LoginContainer>
     </S.Container>
   );

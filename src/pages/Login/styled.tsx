@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const LoginContainer = styled.View`
   width: 92%;
-  height: 80%;
+  height: 84%;
   border-radius: 5px;
   gap: 15px;
   align-items: center;
