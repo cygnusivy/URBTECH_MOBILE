@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, ToastAndroid, Button } from "react-native";
+import { Text, ToastAndroid, Image } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
 
@@ -91,6 +91,19 @@ export default function Login() {
         <Text style={{ fontSize: 15, fontWeight: "400" }}>
           Esqueceu sua senha?
         </Text>
+        <S.AlignView>
+          <S.Line />
+          <Text style={{ fontSize: 15, fontWeight: "400" }}>ou</Text>
+          <S.Line />
+        </S.AlignView>
+        <S.SocialButtonGoogle>
+          <Image source={require("../../assets/googleicon.png")} />
+          <Text>ENTRAR COM GOOGLE</Text>
+        </S.SocialButtonGoogle>
+        <S.SocialButtonFacebook>
+          <Image source={require("../../assets/facebookicon.png")} />
+          <Text style={{ color: "#FFF" }}>ENTRAR COM FACEBOOK</Text>
+        </S.SocialButtonFacebook>
       </S.LoginContainer>
     </S.Container>
   );

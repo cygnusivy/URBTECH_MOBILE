@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const LoginContainer = styled.View`
   width: 92%;
-  height: 70%;
+  height: 80%;
   border-radius: 5px;
   gap: 15px;
   align-items: center;
@@ -34,4 +34,36 @@ export const ButtonSubmit = styled.TouchableOpacity`
   border-radius: 26px;
   justify-content: center;
   align-items: center;
+`;
+
+export const Line = styled.View`
+  border-width: 1px;
+  border-color: #040c33;
+  width: 30%;
+`;
+export const AlignView = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+`;
+export const SocialButtonGoogle = styled.TouchableOpacity`
+  background-color: rgba(4, 12, 51, 0.13);
+  border-radius: 26px;
+  justify-content: center;
+  align-items: center;
+  width: 82%;
+  height: 44px;
+  gap: 10px;
+  flex-direction: row;
+`;
+export const SocialButtonFacebook = styled.TouchableOpacity`
+  background-color: #3b5998;
+  border-radius: 26px;
+  justify-content: center;
+  align-items: center;
+  width: 82%;
+  height: 44px;
+  gap: 10px;
+  flex-direction: row;
 `;
