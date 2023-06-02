@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, ToastAndroid, Image, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
+import { UserContext } from "../../contexts/UserContext";
 
 type data = {
   email: string;
@@ -9,6 +10,7 @@ type data = {
 };
 
 export default function Login({ navigation }) {
+  const { loginUser } = useContext(UserContext);
   const { control, handleSubmit } = useForm();
 
   const isEmailValid = (email: string) => {
