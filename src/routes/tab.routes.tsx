@@ -10,6 +10,7 @@ export default function AuthRoute() {
   return (
     <NavigationContainer>
       <Tab.Navigator
+        initialRouteName="Home"
         screenOptions={({ route }) => ({
           headerShown: false,
           tabBarIcon: ({ focused, color, size }) => {

@@ -59,7 +59,7 @@ export default function Login({ navigation }) {
     try {
       const response: any = await loginUser(data.email, data.senha);
       if (response === 201) {
-        console.log(response);
+        navigation.navigate("Home");
       } else {
         ToastAndroid.show(
           "Não foi possivel realizar o login!",
