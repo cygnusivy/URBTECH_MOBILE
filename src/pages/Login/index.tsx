@@ -1,5 +1,11 @@
-import React, { useContext } from "react";
-import { Text, ToastAndroid, Image, TouchableOpacity } from "react-native";
+import React, { useContext, useState } from "react";
+import {
+  Text,
+  ToastAndroid,
+  Image,
+  TouchableOpacity,
+  ActivityIndicator,
+} from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
 import { UserContext } from "../../contexts/UserContext";
@@ -11,6 +17,7 @@ type data = {
 
 export default function Login({ navigation }) {
   const { loginUser } = useContext(UserContext);
+  const [loading, setLoading] = useState<boolean>(false);
   const { control, handleSubmit } = useForm();
 
   const isEmailValid = (email: string) => {
@@ -48,8 +55,21 @@ export default function Login({ navigation }) {
       ToastAndroid.show(message, ToastAndroid.SHORT);
       return;
     }
-    const response = await loginUser(data.email, data.senha);
-    console.log(response);
+    setLoading(true);
+    try {
+      const response: any = await loginUser(data.email, data.senha);
+      if (response === 201) {
+        console.log(response);
+      } else {
+        ToastAndroid.show(
+          "Não foi possivel realizar o login!",
+          ToastAndroid.SHORT
+        );
+      }
+    } catch {
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -86,10 +106,19 @@ export default function Login({ navigation }) {
           name="senha"
           defaultValue=""
         />
-        <S.ButtonSubmit onPress={handleSubmit(onSubmit)}>
-          <Text style={{ color: "#98C065", fontWeight: "600", fontSize: 20 }}>
-            Entrar
-          </Text>
+
+        <S.ButtonSubmit
+          style={{ opacity: loading ? 0.8 : 1 }}
+          disabled={loading}
+          onPress={handleSubmit(onSubmit)}
+        >
+          {loading ? (
+            <ActivityIndicator size={20} color={"#98C065"} />
+          ) : (
+            <Text style={{ color: "#98C065", fontWeight: "600", fontSize: 20 }}>
+              Entrar
+            </Text>
+          )}
         </S.ButtonSubmit>
         <Text style={{ fontSize: 15, fontWeight: "400" }}>
           Esqueceu sua senha?
