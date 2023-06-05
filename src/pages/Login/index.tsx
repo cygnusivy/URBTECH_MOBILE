@@ -48,7 +48,7 @@ export default function Login({ navigation }) {
       ToastAndroid.show(message, ToastAndroid.SHORT);
       return;
     }
-    console.log(data); // Você pode manipular o envio do formulário aqui
+    loginUser(data.email, data.senha); // Você pode manipular o envio do formulário aqui
   };
 
   return (

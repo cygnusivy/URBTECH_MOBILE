@@ -9,7 +9,7 @@ export default function App() {
     <>
       <UserProvider>
         <StatusBar backgroundColor={"#161B31"} barStyle="light-content" />
-        <AuthRoute />
+        <NoAuthRoutes />
       </UserProvider>
     </>
   );

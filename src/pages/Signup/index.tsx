@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Text, ToastAndroid, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
+import { UserContext } from "../../contexts/UserContext";
 
 type data = {
   nome: string;
@@ -12,6 +13,7 @@ type data = {
 
 export default function Signup({ navigation }) {
   const { control, handleSubmit } = useForm();
+  const { registerUser } = useContext(UserContext);
 
   const isEmailValid = (email: string) => {
     // Regex para validar o email
@@ -31,7 +33,7 @@ export default function Signup({ navigation }) {
     return passwordRegex.test(password);
   };
 
-  const onSubmit = (data: data) => {
+  const onSubmit = async (data: data) => {
     const { email, senha, nome, confirmSenha } = data;
 
     if (senha !== confirmSenha) {
@@ -55,7 +57,22 @@ export default function Signup({ navigation }) {
       ToastAndroid.show(message, ToastAndroid.SHORT);
       return;
     }
-    console.log(data); // Você pode manipular o envio do formulário aqui
+    const response = await registerUser(
+      data.nome,
+      data.email,
+      data.senha,
+      data.confirmSenha
+    );
+
+    if (response != 201) {
+      ToastAndroid.show(
+        "Não foi possivel criar sua conta!",
+        ToastAndroid.SHORT
+      );
+      return;
+    }
+    ToastAndroid.show("Conta criado com sucesso!", ToastAndroid.SHORT);
+    navigation.navigate("Login");
   };
 
   return (
@@ -75,7 +92,7 @@ export default function Signup({ navigation }) {
               placeholderTextColor="#000"
             />
           )}
-          name="email"
+          name="nome"
           defaultValue=""
         />
         <Controller
