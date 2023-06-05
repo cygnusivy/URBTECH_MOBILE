@@ -57,12 +57,7 @@ export default function Signup({ navigation }) {
       ToastAndroid.show(message, ToastAndroid.SHORT);
       return;
     }
-    const response = await registerUser(
-      data.nome,
-      data.email,
-      data.senha,
-      data.confirmSenha
-    );
+    const response = await registerUser(nome, email, senha, confirmSenha);
 
     if (response != 201) {
       ToastAndroid.show(
