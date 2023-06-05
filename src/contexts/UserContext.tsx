@@ -51,38 +51,39 @@ export function UserProvider({ children }: any) {
     nascimento: null,
   });
 
-  const loginUser = async (email: string, senha: string): Promise<void> => {
+  const loginUser = async (email: string, senha: string): Promise<any> => {
     try {
-      const response = await api
-        .post("/login/loginUsuario", {
-          email,
-          senha,
-        })
-        .then(async (res) => {
-          if (res.status === 201) {
-            console.log();
-            const responseDataUser = await api
-              .get(`/usuario/retornoUsuario/${res.data.idUser}`)
-              .then((res) =>
-                setUser({
-                  id: res.data.id,
-                  nome: res.data.nome,
-                  email: res.data.email,
-                  imgUrl: res.data.imgUrl,
-                  descricao: res.data.descricao,
-                  localizacao: res.data.localizacao,
-                  site: res.data.site,
-                  nascimento: res.data.nascimento,
-                })
-              )
-              .then((test) => console.log())
-              .catch((e) => console.log(e));
-          }
+      const response = await api.post("/login/loginUsuario", { email, senha });
+
+      if (response.status === 201) {
+        const responseDataUser = await api.get(
+          `/usuario/retornoUsuario/${response.data.idUser}`
+        );
+
+        await AsyncStorage.setItem(
+          "user",
+          JSON.stringify(responseDataUser.data)
+        );
+
+        setUser({
+          id: responseDataUser.data.id,
+          nome: responseDataUser.data.nome,
+          email: responseDataUser.data.email,
+          imgUrl: responseDataUser.data.imgUrl,
+          descricao: responseDataUser.data.descricao,
+          localizacao: responseDataUser.data.localizacao,
+          site: responseDataUser.data.site,
+          nascimento: responseDataUser.data.nascimento,
         });
+
+        return 201;
+      } else {
+        return undefined;
+      }
     } catch (error) {
       console.log(error);
+      return "Ocorreu um erro";
     }
-    console.log(user);
   };
 
   const registerUser = async (

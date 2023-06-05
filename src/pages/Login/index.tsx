@@ -31,7 +31,7 @@ export default function Login({ navigation }) {
     return passwordRegex.test(password);
   };
 
-  const onSubmit = (data: data) => {
+  const onSubmit = async (data: data) => {
     const { email, senha } = data;
     if (!isEmailValid(email) && !isPasswordValid(senha)) {
       const message = "Email e Senha invalidos!";
@@ -48,7 +48,8 @@ export default function Login({ navigation }) {
       ToastAndroid.show(message, ToastAndroid.SHORT);
       return;
     }
-    loginUser(data.email, data.senha); // Você pode manipular o envio do formulário aqui
+    const response = await loginUser(data.email, data.senha);
+    console.log(response);
   };
 
   return (
