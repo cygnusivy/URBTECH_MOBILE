@@ -3,7 +3,7 @@ import { UserContext } from "../contexts/UserContext";
 import AuthRoute from "./tab.routes";
 import NoAuthRoutes from "./noauth.routes";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { ActivityIndicator, View } from "react-native";
+import { Image, View } from "react-native";
 
 export default function Routes() {
   const [currentRoute, setCurrentRoute] = useState<boolean | null>(null);
@@ -26,9 +26,17 @@ export default function Routes() {
     <>
       {currentRoute === null ? (
         <View
-          style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
+          style={{
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+            backgroundColor: "#161B31",
+          }}
         >
-          <ActivityIndicator size={56} />
+          <Image
+            style={{ width: 190, height: 168 }}
+            source={require("../assets/logogreen.png")}
+          />
         </View>
       ) : currentRoute ? (
         <AuthRoute />

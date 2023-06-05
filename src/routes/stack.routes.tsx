@@ -6,7 +6,7 @@ import Home from "../pages/Home";
 import Menu from "../pages/Menu";
 import Community from "../pages/Community";
 
-export default function NoAuthRoutes() {
+export default function StackRoutes() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
