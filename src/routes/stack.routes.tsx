@@ -9,8 +9,9 @@ import Community from "../pages/Community";
 export default function StackRoutes() {
   const Stack = createNativeStackNavigator();
   return (
-    <NavigationContainer>
+    <NavigationContainer independent>
       <Stack.Navigator
+        initialRouteName="Home"
         screenOptions={{
           headerShown: false,
         }}

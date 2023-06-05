@@ -6,6 +6,7 @@ import Community from "../pages/Community";
 import Menu from "../pages/Menu";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import StackRoutes from "./stack.routes";
 
 export default function AuthRoute() {
   const Tab = createBottomTabNavigator();
@@ -42,7 +43,7 @@ export default function AuthRoute() {
           tabBarInactiveTintColor: "gray",
         })}
       >
-        <Tab.Screen name="Home" component={HomeStack} />
+        <Tab.Screen name="Home" component={StackRoutes} />
         <Tab.Screen name="Community" component={Community} />
       </Tab.Navigator>
     </NavigationContainer>
