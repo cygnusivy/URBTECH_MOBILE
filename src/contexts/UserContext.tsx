@@ -22,10 +22,12 @@ type TUserContext = {
     senha2: string
   ): Promise<any>;
   user: TUser;
+  handleLogout(): any;
 };
 
 export const UserContext = createContext<TUserContext>({
   loginUser: async () => {},
+  handleLogout: async () => {},
   registerUser: async () => {},
   user: {
     id: "",
@@ -105,12 +107,32 @@ export function UserProvider({ children }: any) {
     }
   };
 
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem("user");
+      setUser({
+        id: "",
+        nome: "",
+        email: "",
+        imgUrl: "",
+        descricao: null,
+        localizacao: null,
+        site: null,
+        nascimento: null,
+      });
+      return "Sucess";
+    } catch (e) {
+      return "Failed";
+    }
+  };
+
   return (
     <UserContext.Provider
       value={{
         loginUser,
         registerUser,
         user,
+        handleLogout,
       }}
     >
       {children}

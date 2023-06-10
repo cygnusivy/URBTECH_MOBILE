@@ -34,7 +34,7 @@ export default function Home({ navigation }) {
         ))}
       </MapView>
       <MenuButton onPress={() => navigation.navigate("Menu")}>
-        <Ionicons name="menu" size={48} color="#98C065" />
+        <Ionicons name="menu" size={48} color="#FFF" />
       </MenuButton>
     </Container>
   );
