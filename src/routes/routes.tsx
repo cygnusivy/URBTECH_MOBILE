@@ -38,7 +38,7 @@ export default function Routes() {
             source={require("../assets/logogreen.png")}
           />
         </View>
-      ) : currentRoute ? (
+      ) : !currentRoute ? (
         <AuthRoute />
       ) : (
         <NoAuthRoutes />
