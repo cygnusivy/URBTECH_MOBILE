@@ -8,9 +8,10 @@ import { UserContext } from "../../contexts/UserContext";
 const ICONSIZE = 38;
 
 export default function Menu({ navigation }) {
-  const { handleLogout } = useContext(UserContext);
+  const { handleLogout, user } = useContext(UserContext);
 
   const showLogoutAlert = () => {
+    console.log(user.descricao);
     Alert.alert(
       "Sair",
       "Ao clicar em sair sua conta será desconectada deste aparelho.",

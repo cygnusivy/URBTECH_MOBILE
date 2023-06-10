@@ -77,7 +77,7 @@ export function UserProvider({ children }: any) {
           site: responseDataUser.data.site,
           nascimento: responseDataUser.data.nascimento,
         });
-
+        console.log(responseDataUser.data);
         return 201;
       } else {
         return undefined;
