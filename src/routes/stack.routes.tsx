@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Menu from "../pages/Menu";
 import Community from "../pages/Community";
 import Profile from "../pages/Profile";
+import CreatePost from "../pages/CreateCommunity";
 
 export default function StackRoutes() {
   const Stack = createNativeStackNavigator();
@@ -22,6 +23,7 @@ export default function StackRoutes() {
       <Stack.Screen name="Menu" component={Menu} />
       <Stack.Screen name="Community" component={Community} />
       <Stack.Screen name="Profile" component={Profile} />
+      <Stack.Screen name="CreatePost" component={CreatePost} />
     </Stack.Navigator>
   );
 }
