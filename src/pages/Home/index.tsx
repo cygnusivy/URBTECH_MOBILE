@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import MapView, { Marker } from "react-native-maps";
-import { StyleSheet, View } from "react-native";
+import { Button, StyleSheet, View } from "react-native";
+import { stations, accidents, locations } from "../../localization";
 import { Container, MenuButton } from "./styled";
 import { Ionicons } from "@expo/vector-icons";
+
+type Location = {
+  nome: string;
+  latitude: number;
+  longitude: number;
+};
 export default function Home({ navigation }) {
   const latitudeRecife = -8.05428;
   const longitudeRecife = -34.8813;
-  const locations = [
-    { title: "Recife", latitude: -8.05428, longitude: -34.8813 },
-    { title: "São Paulo", latitude: -23.5505, longitude: -46.6333 },
-  ];
 
+  const trocar = () => {
+    setLocation(stations);
+  };
+  const [location, setLocation] = useState<Location[]>(locations);
   return (
     <Container>
       <MapView
@@ -22,17 +29,18 @@ export default function Home({ navigation }) {
         }}
         style={{ flex: 1 }}
       >
-        {locations.map((location, index) => (
+        {location.map((location, index) => (
           <Marker
             key={index}
             coordinate={{
               latitude: location.latitude,
               longitude: location.longitude,
             }}
-            title={location.title}
+            title={location.nome}
           />
         ))}
       </MapView>
+      <Button onPress={trocar} title="Switch" />
       <MenuButton onPress={() => navigation.navigate("Menu")}>
         <Ionicons name="menu" size={48} color="#FFF" />
       </MenuButton>
