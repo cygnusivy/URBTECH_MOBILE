@@ -7,12 +7,14 @@ import { Image, View } from "react-native";
 
 export default function Routes() {
   const [currentRoute, setCurrentRoute] = useState<boolean | null>(null);
-  const { user } = useContext(UserContext);
+  const { user, isAuthenticated } = useContext(UserContext);
 
   const isAuth = async () => {
     const res = await AsyncStorage.getItem("user");
+    const dataUser = JSON.parse(res);
     if (res !== null) {
       setCurrentRoute(true);
+      await isAuthenticated(dataUser);
       return;
     }
     setCurrentRoute(false);

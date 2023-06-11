@@ -1,22 +1,35 @@
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Cam from "../../components/Camera";
+import axios from "axios";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function CreatePost({ navigation }) {
-  const [imgPost, setImgPost] = useState("");
-  const [open, setOpen] = useState(false);
+  const [imgPost, setImgPost] = useState<string>("");
+  const [open, setOpen] = useState<boolean>(false);
+  const [desc, setDesc] = useState<string>("");
+  const { user } = useContext(UserContext);
+  const handlePost = async () => {
+    const id = user.id;
+    try {
+      const response = await axios.post(
+        "https://urbtech-app.herokuapp.com/post/postar",
+        { imgPost, id, desc }
+      );
 
-  useEffect(() => {}, [imgPost]);
-  const teste = (uri: string) => {
-    console.log(uri);
-    setImgPost(uri);
+      console.log(response.data);
+    } catch (error) {
+      alert("Não foi possível postar!");
+      console.error("Ocorreu um erro:", error);
+    }
   };
+
   return (
     <>
       {open ? (
         <Cam
           closed={() => setOpen(false)}
-          setUriPhoto={(value: string) => teste(value)}
+          setUriPhoto={(value: string) => setImgPost(value)}
         />
       ) : (
         <View
@@ -84,6 +97,7 @@ export default function CreatePost({ navigation }) {
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
+              onPress={handlePost}
               style={{
                 width: 140,
                 height: 40,

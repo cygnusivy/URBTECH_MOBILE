@@ -23,10 +23,12 @@ type TUserContext = {
   ): Promise<any>;
   user: TUser;
   handleLogout(): any;
+  isAuthenticated(data: TUser): any;
 };
 
 export const UserContext = createContext<TUserContext>({
   loginUser: async () => {},
+  isAuthenticated: async () => {},
   handleLogout: async () => {},
   registerUser: async () => {},
   user: {
@@ -52,6 +54,19 @@ export function UserProvider({ children }: any) {
     site: null,
     nascimento: null,
   });
+
+  const isAuthenticated = async (data: TUser) => {
+    setUser({
+      id: data.id,
+      nome: data.nome,
+      email: data.email,
+      imgUrl: data.imgUrl,
+      descricao: data.descricao,
+      localizacao: data.localizacao,
+      site: data.site,
+      nascimento: data.nascimento,
+    });
+  };
 
   const loginUser = async (email: string, senha: string): Promise<any> => {
     try {
@@ -133,6 +148,7 @@ export function UserProvider({ children }: any) {
         registerUser,
         user,
         handleLogout,
+        isAuthenticated,
       }}
     >
       {children}
