@@ -1,4 +1,4 @@
-type TLocalization = {
+export type TLocalization = {
   nome: string;
   latitude: number;
   longitude: number;

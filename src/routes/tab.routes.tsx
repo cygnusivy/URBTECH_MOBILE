@@ -37,7 +37,7 @@ export default function AuthRoute() {
             top: -12,
           },
           tabBarStyle: {
-            backgroundColor: "#15202B",
+            backgroundColor: "#161B31",
             height: 80,
           },
         })}
