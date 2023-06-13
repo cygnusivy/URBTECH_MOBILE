@@ -1,4 +1,12 @@
-import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
+import {
+  View,
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  ToastAndroid,
+  Keyboard,
+} from "react-native";
 import React, { useContext, useState } from "react";
 import Cam from "../../components/Camera";
 
@@ -13,15 +21,26 @@ export default function CreatePost({ navigation }) {
   const handlePost = async () => {
     const id = user.id;
     try {
-      const response = await api.post("/post/postar", {
-        imageUrl: imgPost,
-        idUsuario: id,
-        descricao: desc,
-      });
+      const response = await api.post(
+        "/post/postar",
+        {
+          imgUrl: imgPost,
+          idUsuario: id,
+          descricao: desc,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
 
-      console.log(response.data);
+      ToastAndroid.show("Postagem Realizada!", ToastAndroid.SHORT);
+      setDesc("");
+      setImgPost("");
+      Keyboard.dismiss();
     } catch (error) {
-      alert("Não foi possível postar!");
+      ToastAndroid.show("Não foi possível postar!", ToastAndroid.SHORT);
       console.error("Ocorreu um erro:", error);
     }
   };
@@ -64,6 +83,8 @@ export default function CreatePost({ navigation }) {
             />
           )}
           <TextInput
+            value={desc}
+            onChangeText={(text) => setDesc(text)}
             placeholder="Faça um comentario"
             style={{
               width: "90%",
