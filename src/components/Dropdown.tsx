@@ -62,7 +62,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#F3FCE7",
     elevation: 6,
 
-    position: "absolute",
     marginBottom: 100,
     borderWidth: 0,
   },

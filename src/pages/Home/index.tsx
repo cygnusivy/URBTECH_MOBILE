@@ -41,9 +41,11 @@ export default function Home({ navigation }) {
     const isActive = ref?.current?.isActive();
     //console.log(dropdownIsOpen);
     if (value) {
-      ref?.current?.scrollTo(-500);
+      setDropdownIsOpen(true);
+      ref?.current?.scrollTo(-350);
       return;
     }
+    setDropdownIsOpen(false);
     ref?.current?.scrollTo(-200);
   }, []);
   useEffect(() => {
@@ -79,9 +81,25 @@ export default function Home({ navigation }) {
             style={{
               flex: 1,
               backgroundColor: "#161B31",
-              // alignItems: "center",
+              alignItems: "center",
+              gap: 12,
             }}
           >
+            {dropdownIsOpen ? (
+              <Text
+                style={{
+                  color: "#98C065",
+                  fontSize: 28,
+                  fontWeight: "bold",
+                  marginBottom: 14,
+                }}
+              >
+                Busca
+              </Text>
+            ) : (
+              <></>
+            )}
+
             <Dropdown
               changeValue={handleDropDownOpen}
               isOpen={(value: boolean) => onPress(value)}
