@@ -1,8 +1,9 @@
 import { View, Image, Text, TextInput, TouchableOpacity } from "react-native";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Cam from "../../components/Camera";
-import axios from "axios";
+
 import { UserContext } from "../../contexts/UserContext";
+import { api } from "../../services/api";
 
 export default function CreatePost({ navigation }) {
   const [imgPost, setImgPost] = useState<string>("");
@@ -12,10 +13,11 @@ export default function CreatePost({ navigation }) {
   const handlePost = async () => {
     const id = user.id;
     try {
-      const response = await axios.post(
-        "https://urbtech-app.herokuapp.com/post/postar",
-        { imgPost, id, desc }
-      );
+      const response = await api.post("/post/postar", {
+        imageUrl: imgPost,
+        idUsuario: id,
+        descricao: desc,
+      });
 
       console.log(response.data);
     } catch (error) {

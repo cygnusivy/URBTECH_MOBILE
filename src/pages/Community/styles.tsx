@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
   },
 
   boxContainer: {
-    flex: 1,
     alignItems: "center",
     flexDirection: "row",
     flexWrap: "wrap",

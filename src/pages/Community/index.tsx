@@ -71,19 +71,7 @@ function Community() {
             <Text style={styles.text}>#bikelifestyle</Text>
           </View>
         </View>
-        <TouchableOpacity
-          onPress={() => navigation.navigate("CreatePost")}
-          style={{
-            position: "absolute",
-            bottom: 0,
-            right: 0,
-            margin: 16,
-            zIndex: 99999,
-          }}
-        >
-          <AntDesign name="pluscircle" size={62} color="#161B31" />
-        </TouchableOpacity>
-        <View style={styles.imageContainer}>
+        <View style={{ flex: 1 }}>
           <FlatList
             data={imageUrls}
             renderItem={(data) => (
@@ -127,6 +115,18 @@ function Community() {
             )}
           />
         </View>
+        <TouchableOpacity
+          onPress={() => navigation.navigate("CreatePost")}
+          style={{
+            position: "absolute",
+            bottom: 0,
+            right: 0,
+            margin: 16,
+            zIndex: 99999,
+          }}
+        >
+          <AntDesign name="pluscircle" size={62} color="#161B31" />
+        </TouchableOpacity>
       </SafeAreaView>
 
       {/* <FAB

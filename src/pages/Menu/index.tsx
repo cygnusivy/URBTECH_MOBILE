@@ -14,7 +14,7 @@ export default function Menu({ navigation }) {
     console.log(user.descricao);
     Alert.alert(
       "Sair",
-      "Ao clicar em sair sua conta será desconectada deste aparelho.",
+      "Ao clicar em confirmar sua conta será desconectada deste aparelho.",
       [
         {
           text: "Cancelar",
