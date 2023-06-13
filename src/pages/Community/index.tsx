@@ -103,7 +103,7 @@ function Community() {
                       borderRadius: 30 / 2,
                     }}
                     source={{
-                      uri: data.item.imgUrl,
+                      uri: data.item.imgUsuario,
                     }}
                   />
                   <Text style={{ fontWeight: "bold" }}>
