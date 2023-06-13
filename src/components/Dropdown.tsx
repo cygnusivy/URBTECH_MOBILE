@@ -9,7 +9,7 @@ interface Item {
 
 export function Dropdown({ changeValue, isOpen }) {
   const [open, setOpen] = useState(false);
-  const [value, setValue] = useState<number | null>(7);
+  const [value, setValue] = useState<number | null>(1);
   const [items, setItems] = useState<Item[]>([
     { label: "Estações de locação", value: 1 },
     { label: "Estações de reparo", value: 2 },
