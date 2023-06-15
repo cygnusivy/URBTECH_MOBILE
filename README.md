@@ -42,12 +42,16 @@ expo start
 #### para subir a aplicação mobile. Escanei o QR Code disponibilizado e divirta-se.
 ##
 ![Artefatos](./assets/img/readme/artefatos.png)
-
+##
 <a href="https://www.figma.com/file/9cTYQ1oBqvuStSaEPpmT79/URBTECH?node-id=20-2&t=cLoR578noDStaAkv-0" target="_blank" rel="noopener">Figma - Protótipo Mobile</a>
 ##
 ![Tecnologiasmd](./assets/img/readme/tecnologia.png)
-###
-![Tecnologias](./assets/img/readme/tecnologias.png)
+##
+#### - Mobile: React Native; TypeScript; Styled Component; Cloudinary; Expo Go;
+#### - APIs Back-end: Java; Spring Boot; Heroku (para deploy da aplicação)
+#### - Banco de dados: Amazon AWS; MySQL;
+##
+![Tecnologias](./assets/img/tecatualizado.png)
 ##
 ![Base de dados](./assets/img/readme/basedados.png)
 
