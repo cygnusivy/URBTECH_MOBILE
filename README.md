@@ -30,11 +30,11 @@ expo --version
 ```
 git clone "https://github.com/cygnusivy/URBTECH_MOBILE.git"
 ```
-#### - Navege até a pasta raíz do seu projeto e execute:
+#### - Navege até a pasta raíz do projeto e execute:
 ```
 yarn 
 ```
-#### para baicar os pacotes e dependências do projeto.
+#### para baixar os pacotes e dependências do projeto.
 #### - Por fim, execute:
 ```
 expo start
