@@ -51,8 +51,13 @@ expo start
 #### - APIs Back-end: Java; Spring Boot; Heroku (para deploy da aplicação)
 #### - Banco de dados: Amazon AWS; MySQL;
 ##
-![Tecnologias](./assets/img/tecatualizado.png)
+![Tecnologias](./assets/img/readme/tecatualizado.png)
+##
+![Arquiteturamd](./assets/img/readme/txtaqut.png)
+##
+#### O projeto URBTECH MOBILE foi implementado utilizando o React Native e o servidor de desenvolvimento local do Expo foi utilizado para servir a aplicação durante o desenvolvimento. O Back-End Java foi feito utilizando o framework de desenvolvimento Spring Framework e a aplicação foi posta em produção no Heroku. Nossa aplicação React Native comunica-se com o nosso back-end por meio das APIs Rest desenvolvidas. Para o banco de dados, utilizamos o MySQL e o Amazon AWS onde o banco foi hospedado. O fluxo de comunicação pode ser visualizado abaixo:
+![Arquitetura](./assets/img/readme/arqt.png)
 ##
 ![Base de dados](./assets/img/readme/basedados.png)
 
-Todos os dados utilizados para desenvolvimento da plataforma foram obtidos a partir do [Portal de Dados Abertos da cidade do Recife](http://dados.recife.pe.gov.br/).
+#### Todos os dados utilizados para desenvolvimento da plataforma foram obtidos a partir do [Portal de Dados Abertos da cidade do Recife](http://dados.recife.pe.gov.br/).
