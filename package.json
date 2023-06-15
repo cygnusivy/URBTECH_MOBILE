@@ -9,14 +9,12 @@
     "web": "expo start --web"
   },
   "dependencies": {
-    "@gorhom/bottom-sheet": "^4",
     "@react-native-async-storage/async-storage": "1.17.11",
     "@react-navigation/bottom-tabs": "^6.5.7",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
     "@types/react": "~18.0.27",
     "axios": "^1.4.0",
-    "dotenv": "^16.1.4",
     "expo": "~48.0.15",
     "expo-camera": "~13.2.1",
     "expo-file-system": "~15.2.2",
