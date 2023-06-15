@@ -41,7 +41,9 @@ export default function Menu({ navigation }) {
 
   return (
     <Container>
-      <MenuButtons title={"Comunidade"} />
+      <TouchableOpacity onPress={() => navigation.navigate("Community")}>
+        <MenuButtons title={"Comunidade"} />
+      </TouchableOpacity>
       <MenuButtons title={"Informações"} />
       <MenuButtons title={"Configurações"} />
       <MenuButtons title={"Ajuda"} />
