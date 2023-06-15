@@ -8,9 +8,23 @@ import {
 } from "react-native";
 import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
-
+import * as ImagePicker from "expo-image-picker";
 export default function Profile({ navigation }) {
   const { user } = useContext(UserContext);
+
+  const handleSelectImage = async () => {
+    let result: ImagePicker.ImagePickerResult =
+      await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [4, 3],
+        quality: 1,
+      });
+
+    if (!result.canceled) {
+      console.log(result.assets[0].uri);
+    }
+  };
 
   return (
     <View
@@ -43,9 +57,11 @@ export default function Profile({ navigation }) {
           alignItems: "center",
           justifyContent: "center",
         }}
+        onPress={handleSelectImage}
       >
         <Text>Selecionar imagem</Text>
       </TouchableOpacity>
+
       <ScrollView style={{ flex: 1, width: "100%", gap: 0 }}>
         <Text style={{ color: "#98C065", fontSize: 16, marginTop: 28 }}>
           Nome:
@@ -83,5 +99,3 @@ export default function Profile({ navigation }) {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});
