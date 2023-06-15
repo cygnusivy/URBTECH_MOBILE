@@ -11,11 +11,12 @@ import {
 type Props = {
   title: string;
   logout?: () => any;
+  onPress?: () => any;
 };
 
 const ICONSIZE = 38;
 
-export default function MenuButtons({ title, logout }: Props) {
+export default function MenuButtons({ title, logout, onPress }: Props) {
   const icon = (title: string) => {
     if (title === "Comunidade") {
       return <FontAwesome name="group" size={24} color="black" />;
@@ -34,7 +35,9 @@ export default function MenuButtons({ title, logout }: Props) {
 
   return (
     <TouchableOpacity
-      onPress={() => (title == "Sair" ? logout() : null)}
+      onPress={() =>
+        title == "Sair" ? logout() : title === "Comunidade" ? onPress() : null
+      }
       style={{
         flexDirection: "row",
         alignItems: "center",
