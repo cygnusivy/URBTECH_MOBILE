@@ -9,7 +9,7 @@ export const Container = styled.View`
 
 export const LoginContainer = styled.KeyboardAvoidingView`
   width: 92%;
-  height: 74%;
+  height: 78%;
   border-radius: 5px;
   gap: 15px;
   align-items: center;

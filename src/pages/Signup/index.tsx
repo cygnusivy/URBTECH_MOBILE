@@ -3,7 +3,7 @@ import { Text, ToastAndroid, TouchableOpacity } from "react-native";
 import { useForm, Controller } from "react-hook-form";
 import * as S from "./styled";
 import { UserContext } from "../../contexts/UserContext";
-
+import { AntDesign } from "@expo/vector-icons";
 type data = {
   nome: string;
   email: string;
@@ -73,6 +73,12 @@ export default function Signup({ navigation }) {
   return (
     <S.Container>
       <S.LoginContainer>
+        <TouchableOpacity
+          style={{ alignSelf: "flex-start", marginLeft: 15, marginTop: 15 }}
+          onPress={() => navigation.goBack()}
+        >
+          <AntDesign name="arrowleft" size={28} color="#161b31" />
+        </TouchableOpacity>
         <S.LogoImage source={require("../../assets/urbtech-logo.png")} />
         <Text style={{ fontSize: 15, fontWeight: "400" }}>Criar Conta</Text>
 
@@ -113,6 +119,7 @@ export default function Signup({ navigation }) {
               value={value}
               placeholder="Senha"
               placeholderTextColor="#000"
+              secureTextEntry
             />
           )}
           name="senha"
