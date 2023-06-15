@@ -3,7 +3,9 @@
     "name": "URBTECH",
     "slug": "URBTECH",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "plugins": [
       [
         "expo-camera",
@@ -11,6 +13,14 @@
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "cb414e00-750d-457a-a14d-8e27c9017635"
+      }
+    },
+    "android": {
+      "package": "com.atlaspose.URBTECH"
+    }
   }
 }
