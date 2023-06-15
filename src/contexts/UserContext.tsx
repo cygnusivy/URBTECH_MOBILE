@@ -24,10 +24,12 @@ type TUserContext = {
   user: TUser;
   handleLogout(): any;
   isAuthenticated(data: TUser): any;
+  updateDataUser(data: TUser): any;
 };
 
 export const UserContext = createContext<TUserContext>({
   loginUser: async () => {},
+  updateDataUser: async () => {},
   isAuthenticated: async () => {},
   handleLogout: async () => {},
   registerUser: async () => {},
@@ -103,6 +105,25 @@ export function UserProvider({ children }: any) {
     }
   };
 
+  const updateDataUser = async (data: TUser) => {
+    console.log(data);
+    const response = await api
+      .put(`/usuario/atualizarUsuario/${user.id}`, {
+        descricao: data.descricao,
+        imgUrl: data.imgUrl,
+        localizacao: data.localizacao,
+        nascimento: data.nascimento,
+        nome: data.nome,
+        site: data.site,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  };
+
   const registerUser = async (
     nome: string,
     email: string,
@@ -148,6 +169,7 @@ export function UserProvider({ children }: any) {
         loginUser,
         registerUser,
         user,
+        updateDataUser,
         handleLogout,
         isAuthenticated,
       }}

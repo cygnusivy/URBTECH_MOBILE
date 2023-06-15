@@ -10,7 +10,7 @@ import React, { useContext } from "react";
 import { UserContext } from "../../contexts/UserContext";
 import * as ImagePicker from "expo-image-picker";
 export default function Profile({ navigation }) {
-  const { user } = useContext(UserContext);
+  const { user, updateDataUser } = useContext(UserContext);
 
   const handleSelectImage = async () => {
     let result: ImagePicker.ImagePickerResult =
@@ -22,7 +22,17 @@ export default function Profile({ navigation }) {
       });
 
     if (!result.canceled) {
-      console.log(result.assets[0].uri);
+      const updateResult = await updateDataUser({
+        descricao: user.descricao,
+        imgUrl: result.assets[0].uri,
+        localizacao: user.localizacao,
+        nascimento: user.nascimento,
+        nome: user.nome,
+        site: user.site,
+        id: "",
+        email: user.email,
+      });
+      console.log(updateResult);
     }
   };
 
@@ -95,6 +105,20 @@ export default function Profile({ navigation }) {
           Sites:
         </Text>
         <Text style={{ color: "white", fontSize: 18 }}>{user.site}</Text>
+
+        <TouchableOpacity
+          style={{
+            backgroundColor: "#DDD",
+            width: 120,
+            height: 30,
+            justifyContent: "center",
+            alignItems: "center",
+            borderRadius: 12,
+            alignSelf: "center",
+          }}
+        >
+          <Text>Editar perfil</Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
