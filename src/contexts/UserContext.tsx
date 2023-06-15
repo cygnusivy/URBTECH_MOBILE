@@ -116,8 +116,8 @@ export function UserProvider({ children }: any) {
         senha: senha,
         senha2: senha2,
       });
-      console.log(response.data);
-      return response.data.status; // Dados de resposta da API
+      console.log(response.status);
+      return response.status; // Dados de resposta da API
     } catch (error) {
       console.log(error);
     }
