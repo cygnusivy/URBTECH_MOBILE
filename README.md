@@ -45,6 +45,10 @@ expo start
 ##
 <a href="https://www.figma.com/file/9cTYQ1oBqvuStSaEPpmT79/URBTECH?node-id=20-2&t=cLoR578noDStaAkv-0" target="_blank" rel="noopener">Figma - Protótipo Mobile</a>
 ##
+![Diagramamd](./assets/img/readme/diagrama.png)
+##
+![Diagrama](./assets/img/readme/fluxo.png)
+##
 ![Tecnologiasmd](./assets/img/readme/tecnologia.png)
 ##
 #### - Mobile: React Native; TypeScript; Styled Component; Cloudinary; Expo Go;
